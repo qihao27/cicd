@@ -1,0 +1,31 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Publish Docker Image
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-container:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Publish to Guthub Packages
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ github.actor }}
+          password: ${{ secret.GUTHUB_TOKEN }}
+          registry: docker.pkg.github.com
+          repository: ${{ github.repository }}/cicd
+          tag: latest, ${{ github.run_number }}
+      - name: Publish to Docker Hub
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secret.DOCKER_USERNAME }}
+          password: ${{ secret.DOCKER_PW }}
+          repository: wuqh07/cicd
+          tag: latest, ${{ github.run_number }}
