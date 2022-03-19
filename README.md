@@ -8,6 +8,7 @@ https://github.com/u1i/devops-course/blob/master/projects/tech.md
 * email notification on push
 * build/test on push/pull request
 * deploy to Heroku upon CI pass: https://ci-implementation.herokuapp.com
+* notification through Slack
 
 
 # Project Requirement
