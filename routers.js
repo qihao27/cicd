@@ -6,6 +6,10 @@ let router = express.Router();
 router.use("/public", express.static(path.join(__dirname, "public")));
 
 router.get("/", (request, response) => {
+    response.redirect("/index");
+});
+
+router.get("/index", (request, response) => {
     response.sendFile(path.join(__dirname + "/index.html"));
 });
 
