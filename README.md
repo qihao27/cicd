@@ -4,11 +4,12 @@ A GitHub repository that executes a workflow each time someone commits a change.
 ## Project Description
 https://github.com/u1i/devops-course/blob/master/projects/tech.md
 
-## Workflow
+## Available Workflow
 * email notification on push
-* build/test on push/pull request
+* build/test on pull request
 * deploy to Heroku upon CI pass: https://ci-implementation.herokuapp.com
-* notification through Slack
+* notification through Slack on commit
+* test/publish docker image on push
 
 
 # Project Requirement
