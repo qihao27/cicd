@@ -18,14 +18,14 @@ jobs:
         uses: docker/build-push-action@v1
         with:
           username: ${{ github.actor }}
-          password: ${{ secret.GUTHUB_TOKEN }}
+          password: ${{ secrets.GITHUB_TOKEN }}
           registry: docker.pkg.github.com
           repository: ${{ github.repository }}/cicd
           tag: latest, ${{ github.run_number }}
       - name: Publish to Docker Hub
         uses: docker/build-push-action@v1
         with:
-          username: ${{ secret.DOCKER_USERNAME }}
-          password: ${{ secret.DOCKER_PW }}
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PW }}
           repository: wuqh07/cicd
           tag: latest, ${{ github.run_number }}
