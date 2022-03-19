@@ -1,4 +1,4 @@
-const data = require("./data");
+const data = require("../app/data");
 
 test('Returns user by user_id', () => {
     const user =
