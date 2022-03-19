@@ -3,7 +3,6 @@ const data = require("./data");
 const app = express();
 require('dotenv').config();
 
-// req.isAuthenticated is provided from the auth router
 app.get('/', (request, response) => {
   response.send("Hello, World!")
 });
