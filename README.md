@@ -1,52 +1,37 @@
 # CI/CD
 A GitHub repository that executes a workflow each time someone commits a change.
 
-## Project Description
-https://github.com/u1i/devops-course/blob/master/projects/tech.md
-
 ## Available Workflow
 * email notification on push
-* build/test on pull request
+* build/test on push/pull request
 * deploy to Heroku upon CI pass: https://ci-implementation.herokuapp.com
-* notification through Slack on commit
-* test/publish docker image on push
+* subscribe to notifications for a repository with Slack
+* test/publish docker image to DockerHub
 
+### Email Notification
+Github in-built: Settings > Integrations > Email notifications
 
-# Project Requirement
+### Build/Test on Pull Request
+* Github Actions to setup workflow to run unit test with Jest
+    * push on main branch
+    * pull request on any branches other than main
+* [test.yml](https://github.com/qihao27/cicd/blob/main/.github/workflows/test.yml)
 
-## Your Task
+### Deploy to Heroku upon CI pass
+Heroku in-built: Deploy > Automatic deploys > Enable Automatic deploys
 
-Create a GitHub repository that executes a workflow each time someone commits a change.
+### Slack: Subscribe to Notifications for a Repository
+* add Github app to Slack
+* subscribe to a repo
+* customizable notification
+* [Github for Slack](https://slack.com/help/articles/232289568-GitHub-for-Slack)
 
-![](./gha.png)
+### Test/Publish Docker Image to DockerHub
+* run unit tests on push to main branch
+* build and publish docker image to DockerHub on tests pass
+* [docker-publish.yml](https://github.com/qihao27/cicd/blob/main/.github/workflows/docker-publish.yml)
+* [Dockerfile](https://github.com/qihao27/cicd/blob/main/Dockerfile)
+* [DockerHub Repo](https://hub.docker.com/repository/docker/wuqh07/cicd)
 
-This workflow could do one or several of these things:
-
-* test application code
-* package / compile application code
-* send a message via WhatsApp, Telegram etc
-* deploy it to the cloud
-
-The GitHub repository should contain your application code, along with workflows that execute steps to test, package, or deploy it.
-
-### What are we looking to see?
-
-You're free to take this into any direction you would like as long as it fulfills these two things:
-
-* some action is triggered once someone commits a change in the repository
-* the GitHub repo link (and README.md file) gives sufficient explanation of what you're trying to achieve, your learning, the steps you take etc.
-
-It's much more important to have a self-explanatory README.md with diagrams, screenshots etc that show your thought process, what you're looking to achieve instead of superb, but undocumented automation magic.
-
-In a previous course you may have produced applications (frontend, backend, API), alternatively you could use [this project](https://github.com/u1i/nodejs-test) as a basis.
-
-Pushing new commits to the repository should trigger a workflow that does something with your code. It could be a notification on a chat app, executing tests, packaging it up, or deploying it to the cloud. Bonus points if you do several of these, but that is not the expectation.
-
-
-## Tips & Guidelines
-
-* Your GitHub repository should contain
-    * Application Source Code
-    * Workflow(s)
-    * README.md (or any other document) that explains the outcome, your steps, and your thought process
-* Start with an empty (or initialized) GitHub repository. As you implement and make changes, do a commit + push each time
+## Project Requirements
+https://github.com/u1i/devops-course/blob/master/projects/tech.md
