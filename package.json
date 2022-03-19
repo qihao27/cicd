@@ -1,26 +1,29 @@
 {
-  "name": "backend",
+  "name": "cicd",
   "version": "1.0.0",
-  "description": "Backend module for PC2.",
-  "main": "index.js",
+  "description": "",
+  "main": "main1.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/qihao27/nodejs.git"
+    "url": "git+https://github.com/qihao27/cicd.git"
   },
   "author": "Qihao",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/qihao27/nodejs/issues"
+    "url": "https://github.com/qihao27/cicd/issues"
   },
-  "homepage": "https://github.com/qihao27/nodejs#readme",
+  "homepage": "https://github.com/qihao27/cicd#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "express-openid-connect": "^2.7.1",
     "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "jest": "^27.5.1"
   }
 }
