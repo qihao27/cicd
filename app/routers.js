@@ -1,41 +1,51 @@
 const express = require("express");
 const path = require("path");
-const database = require("./data");
+require("dotenv").config();
+const { connection } = require("./database");
 
 let router = express.Router();
 router.use("/public", express.static(path.join(__dirname, "public")));
 
-router.get("/", (request, response) => {
-    response.redirect("/index");
+router.get("/", (req, res) => {
+    res.redirect("/index");
 });
 
-router.get("/index", (request, response) => {
-    response.sendFile(path.join(__dirname + "/index.html"));
+router.get("/index", (req, res) => {
+    res.sendFile(path.join(__dirname + "/index.html"));
 });
 
-router.get("/user/all", (request, response) => {
-    let users = database.get_all_users();
-    response.send(users);
+router.get("/user/all", (req, res) => {
+    connection.query(`select * from user`, (err, result) => {
+        if (err) {
+            console.log(err);
+            response.status(500).send("Something went wrong...");
+        } else {
+            result.length == 0
+            ? res.status(404).send("data not found")
+            : res.status(200).send(result);
+        }
+    });
 });
 
-router.get("/user/by-uid", (request, response) => {
-    let users = database.get_user_by_user_id(request.query.uid);
-    response.send(users);
+router.get("/user/by-uid", (req, res) => {
+    let uid = req.query.uid;
+    connection.query(`select * from user where uid=${uid}`, (err, result) => {
+        if (err) {
+            console.log(err);
+            response.status(500).send("Something went wrong...");
+        } else {
+            result.length == 0
+            ? res.status(404).send("user not found")
+            : res.status(200).send(result);
+        }
+    });
 });
 
-router.post("/user/add", (request, response) => {
-  let user = database.add_user(request.body.user);
-  response.send("user added.");
-});
-
-router.get("/sum", (request, response) => {
-    let sum = parseInt(request.query.a) + parseInt(request.query.b);
-    response.send("Sum is: " + sum);
+router.get("/sum", (req, res) => {
+    let sum = parseInt(req.query.a) + parseInt(req.query.b);
+    res.send("Sum is: " + sum);
   });
 
-router.post("/sum", (request, response) => {
-    let sum = request.body.a + request.body.b;
-    response.send("Sum is : " + sum);
-});
+
 
 module.exports = { router };

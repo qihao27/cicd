@@ -2,11 +2,11 @@ const b1 = document.getElementById("b1");
 const url = "https://ci-implementation.herokuapp.com";
 // const url = "http://localhost:3000";
 b1.addEventListener("click", () => {
-  let user_id = document.getElementById("inputbox").value;
-  $.getJSON(`${url}/user/by-uid?uid=${user_id}`, (data) => {
-    let code = `First Name: ${data.first_name} <br>
-                Last Name:  ${data.last_name} <br>
-                Email:      ${data.email}`;
+  let uid = document.getElementById("inputbox").value;
+  $.getJSON(`${url}/user/by-uid?uid=${uid}`, (data) => {
+    let code = `First Name: ${data[0].first_name} <br>
+                Last Name:  ${data[0].last_name} <br>
+                Email:      ${data[0].email}`;
     $(".mypanel").html(code);
   });
 });
