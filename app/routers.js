@@ -41,11 +41,36 @@ router.get("/user/by-uid", (req, res) => {
     });
 });
 
+router.get("/query", (req, res) => {
+    let sql = req.query.sql;
+    connection.query(`${sql}`, (err, result) => {
+        if (err) {
+            console.log(err);
+            response.status(500).send("Something went wrong...");
+        } else {
+            result.length == 0
+            ? res.status(404).send("data not found")
+            : res.status(200).send(result);
+        }
+    });
+});
+
+router.get("/db/tables", (req, res) => {
+    connection.query(`show tables`, (err, result) => {
+        if (err) {
+            console.log(err);
+            response.status(500).send("Something went wrong...");
+        } else {
+            result.length == 0
+            ? res.status(404).send("data not found")
+            : res.status(200).send(result);
+        }
+    });
+});
+
 router.get("/sum", (req, res) => {
     let sum = parseInt(req.query.a) + parseInt(req.query.b);
     res.send("Sum is: " + sum);
   });
-
-
 
 module.exports = { router };

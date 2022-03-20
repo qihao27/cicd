@@ -1,9 +1,7 @@
-.container {
-    margin: 30px auto;
-    width: 600px;
+.left {
+    width: 75%;
 }
 
-form {
-    margin: 30px auto;
-    width: 400px;
+.right {
+    width: 25%;
 }
