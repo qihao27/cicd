@@ -3,7 +3,6 @@ const url = "https://ci-implementation.herokuapp.com";
 const btn_filter = document.getElementById("filter");
 const btn_all = document.getElementById("all");
 const btn_query = document.getElementById("query");
-const overview = document.getElementById("overview");
 
 init();
 
@@ -12,6 +11,7 @@ btn_filter.addEventListener("click", () => {
   $.getJSON(`${url}/user/by-uid?uid=${uid}`, (data) => {
     $("#table").html("");
     constructTable(data, "#table")
+    modTable("table");
   });
 });
 
@@ -19,6 +19,7 @@ btn_all.addEventListener("click", () => {
   $.getJSON(`${url}/user/all`, (data) => {
     $("#table").html("");
     constructTable(data, "#table")
+    modTable("table");
   });
 });
 
@@ -27,6 +28,7 @@ btn_query.addEventListener("click", () => {
   $.getJSON(`${url}/query?sql=${sql}`, (data) => {
     $("#table").html("");
     constructTable(data, "#table")
+    modTable("table");
   });
 });
 
@@ -34,6 +36,9 @@ function init() {
   $.getJSON(`${url}/db/tables`, (data,callback) => {
     $("#overview").html("");
     constructTable(data, "#overview")
+    modTable("overview");
+    let headers = document.getElementsByTagName('th'); 
+    headers[0].innerHTML = 'Tables in DB';
   });
 }
 
@@ -64,4 +69,16 @@ function Headers(list, selector) {
   }
   $(selector).append(header);
   return columns;
+}
+
+function modTable(id) {
+  const table = document.getElementById(id);
+  let body = table.createTBody();
+  console.log(table.rows.length-1);
+  for (var i=0; i<table.rows.length-1; i++) {
+    body.appendChild(table.rows[1]);
+  }
+  let header = table.createTHead();
+  let thead = table.rows[0];
+  header.appendChild(thead);
 }

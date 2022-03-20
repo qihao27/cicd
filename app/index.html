@@ -14,6 +14,13 @@
 </head>
 
 <body>
+  <header class="d-flex pt-2 align-items-center justify-content-between header-container">
+    <div class="d-flex align-items-center">
+      <img class="media-object logo" src="https://cdn.glitch.global/0b724852-0c9d-4ac2-9daf-5c1ef7d40ef5/logo.jpg?v=1644579180942">
+      <h1>CI/CD Implementation</h1>
+    </div>
+  </header>
+
   <div class="row">
     <div class="row col-md-9">
       <form id="form" class="g-5 col-md-4">
@@ -21,8 +28,8 @@
           <input id="inputbox" class="form-control" placeholder="Enter user id..."></input>
         </div>
         <div class="d-flex justify-content-between mt-3">
-          <button type="button" id="filter" class="btn btn-primary">Filter by UID</button>
-          <button type="button" id="all" class="btn btn-primary">View All</button>
+          <button type="button" id="filter" class="btn">Filter by UID</button>
+          <button type="button" id="all" class="btn">View All</button>
         </div>
       </form>
 
@@ -31,7 +38,7 @@
           <input id="inputquery" class="form-control" placeholder="Enter sql query..."></input>
         </div>
         <div class="d-grid gap-2 col-6 mx-auto mt-3">
-          <button type="button" id="query" class="btn btn-primary">Query</button>
+          <button type="button" id="query" class="btn">Query</button>
         </div>
       </form>
 
