@@ -1,21 +1,25 @@
-# CI/CD
+# CI/CD Implementation
+[![](https://github.com/qihao27/cicd/actions/workflows/test.yml/badge.svg)](https://github.com/qihao27/cicd/actions/workflows/test.yml)
+[![](https://github.com/qihao27/cicd/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/qihao27/cicd/actions/workflows/docker-publish.yml)
+![](https://img.shields.io/github/last-commit/qihao27/cicd/main) <br>
 A GitHub repository that executes a workflow each time someone commits a change.
 
 ## Available Workflow
-* email notification on push
-* build/test on push/pull request
+* Email notification on push to main branch
+* Build/Test on push/pull request
 * deploy to Heroku upon CI pass: https://ci-implementation.herokuapp.com
 * subscribe to notifications for a repository with Slack
 * test/publish docker image to DockerHub
 
 ### Email Notification
 Github in-built: Settings > Integrations > Email notifications
+![](images/email_notification.png)
 
-### Build/Test on Pull Request
+### Build/Test on Push/Pull Request
 * Github Actions to setup workflow to run unit test with Jest
     * push on main branch
     * pull request on any branches other than main
-* [test.yml](https://github.com/qihao27/cicd/blob/main/.github/workflows/test.yml)
+* [workflow](https://github.com/qihao27/cicd/blob/main/.github/workflows/test.yml)
 
 ### Deploy to Heroku upon CI pass
 Heroku in-built: Deploy > Automatic deploys > Enable Automatic deploys
@@ -25,13 +29,14 @@ Heroku in-built: Deploy > Automatic deploys > Enable Automatic deploys
 * subscribe to a repo
 * customizable notification
 * [Github for Slack](https://slack.com/help/articles/232289568-GitHub-for-Slack)
+![](images/slack-bot.png)
 
 ### Test/Publish Docker Image to DockerHub
 * run unit tests on push to main branch
 * build and publish docker image to DockerHub on tests pass
-* [docker-publish.yml](https://github.com/qihao27/cicd/blob/main/.github/workflows/docker-publish.yml)
+* [workflow](https://github.com/qihao27/cicd/blob/main/.github/workflows/docker-publish.yml)
 * [Dockerfile](https://github.com/qihao27/cicd/blob/main/Dockerfile)
-* [DockerHub Repo](https://hub.docker.com/repository/docker/wuqh07/cicd)
+* [DockerHub Repo](https://hub.docker.com/r/wuqh07/cicd)
 
 ## Project Requirements
 https://github.com/u1i/devops-course/blob/master/projects/tech.md
