@@ -1,7 +1,8 @@
 # CI/CD Implementation
 [![](https://github.com/qihao27/cicd/actions/workflows/test.yml/badge.svg)](https://github.com/qihao27/cicd/actions/workflows/test.yml)
 [![](https://github.com/qihao27/cicd/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/qihao27/cicd/actions/workflows/docker-publish.yml)
-![](https://img.shields.io/github/last-commit/qihao27/cicd/main) <br>
+![](https://img.shields.io/github/last-commit/qihao27/cicd/main)
+[![](https://img.shields.io/badge/-Pages-blue?logo=github&logoColor=white)](https://qihao27.github.io/cicd) <br>
 A GitHub repository that executes a workflow each time someone commits a change.
 
 ## Available Workflow
@@ -42,6 +43,19 @@ Heroku in-built: Deploy > Automatic deploys > Enable Automatic deploys
 ```
 docker pull wuqh07/cicd:main
 ```
+
+## Local Tests
+* open /app/btn_ctrl.js
+* comment first line and un-comment second line
+```
+// const url = "https://ci-implementation.herokuapp.com";
+const url = "http://localhost:3000";
+```
+* run /app/main.js in terminal
+```
+node app/main.js
+```
+* open [localhost](http://localhost:3000/) in web browser
 
 ## Project Requirements
 https://github.com/u1i/devops-course/blob/master/projects/tech.md
