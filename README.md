@@ -29,7 +29,8 @@ Heroku in-built: Deploy > Automatic deploys > Enable Automatic deploys
 * subscribe to a repo
 * customizable notification
 * [Github for Slack](https://slack.com/help/articles/232289568-GitHub-for-Slack)
-###
+
+
 <img src="images/slack-bot.png" width="500">
 
 ### Test/Publish Docker Image to DockerHub
