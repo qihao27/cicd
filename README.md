@@ -12,8 +12,8 @@ A GitHub repository that executes a workflow each time someone commits a change.
 * test/publish docker image to DockerHub
 
 ### Email Notification
-Github in-built: Settings > Integrations > Email notifications
-![](images/email_notification.png)
+Github in-built: Settings > Integrations > Email notifications <br>
+<img src="images/email_notification.png" width="500">
 
 ### Build/Test on Push/Pull Request
 * Github Actions to setup workflow to run unit test with Jest
@@ -29,7 +29,8 @@ Heroku in-built: Deploy > Automatic deploys > Enable Automatic deploys
 * subscribe to a repo
 * customizable notification
 * [Github for Slack](https://slack.com/help/articles/232289568-GitHub-for-Slack)
-![](images/slack-bot.png)
+###
+<img src="images/slack-bot.png" width="500">
 
 ### Test/Publish Docker Image to DockerHub
 * run unit tests on push to main branch
@@ -37,6 +38,9 @@ Heroku in-built: Deploy > Automatic deploys > Enable Automatic deploys
 * [workflow](https://github.com/qihao27/cicd/blob/main/.github/workflows/docker-publish.yml)
 * [Dockerfile](https://github.com/qihao27/cicd/blob/main/Dockerfile)
 * [DockerHub Repo](https://hub.docker.com/r/wuqh07/cicd)
+```
+docker pull wuqh07/cicd:main
+```
 
 ## Project Requirements
 https://github.com/u1i/devops-course/blob/master/projects/tech.md
