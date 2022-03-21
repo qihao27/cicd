@@ -25,11 +25,16 @@ btn_all.addEventListener("click", () => {
 
 btn_query.addEventListener("click", () => {
   let sql = document.getElementById("inputquery").value;
-  $.getJSON(`${url}/query?sql=${sql}`, (data) => {
-    $("#table").html("");
-    constructTable(data, "#table")
-    modTable("table");
-  });
+  if (sql.toLowerCase().startsWith("select") || sql.toLowerCase().startsWith("show") ||
+      sql.toLowerCase().startsWith("desc")) {
+    $.getJSON(`${url}/query?sql=${sql}`, (data) => {
+      $("#table").html("");
+      constructTable(data, "#table")
+      modTable("table");
+    });
+  } else {
+    alert("Only SELECT/SHOW/DESC statements are allowed!");
+  }
 });
 
 function init() {
