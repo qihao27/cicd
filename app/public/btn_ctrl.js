@@ -3,8 +3,49 @@ const url = "https://ci-implementation.herokuapp.com";
 const btn_filter = document.getElementById("filter");
 const btn_all = document.getElementById("all");
 const btn_query = document.getElementById("query");
+const btn_eth = document.getElementById("eth");
+const btn_qh = document.getElementById("qh");
+const qh_address = "0x96f9842De6E591C17d6e544Ff3419Bee5A4f26a3";
+const abi = [{
+  constant: true,
+  inputs: [{ name: "_owner", type: "address" }],
+  name: "balanceOf",
+  outputs: [{ name: "balance", type: "uint256" }],
+  type: "function",
+}];
 
 init();
+
+btn_eth.addEventListener("click", () => {
+  if (window.ethereum) {
+    console.log("MetaMask is installed!");
+    web3 = new Web3(window.ethereum);
+    ethereum.request({ method: "eth_requestAccounts" });
+    var account = web3.currentProvider.selectedAddress;
+    console.log(account);
+    web3.eth.getBalance(account)
+      .then((wei) => {
+        var eth = web3.utils.fromWei(wei, 'ether');
+        $("#token-amount").html(parseFloat(eth).toFixed(4) + " ETH");
+      });
+  }
+});
+
+btn_qh.addEventListener("click", () => {
+  if (window.ethereum) {
+    console.log("MetaMask is installed!");
+    var web3 = new Web3(window.ethereum);
+    ethereum.request({ method: "eth_requestAccounts" });
+    var account = web3.currentProvider.selectedAddress;
+    console.log(account);
+    var tokenContract = new web3.eth.Contract(abi, qh_address);
+    tokenContract.methods.balanceOf(account).call()
+      .then((wei) => {
+        var qh = web3.utils.fromWei(wei);
+        $("#qh-amount").html(parseFloat(qh).toFixed(4) + " WQH");
+      });
+  }
+});
 
 btn_filter.addEventListener("click", () => {
   let uid = document.getElementById("inputbox").value;
