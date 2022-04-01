@@ -1,4 +1,4 @@
-const url = "https://ci-implementation.herokuapp.com";
+const url = "https://qh-smart-contract.herokuapp.com";
 // const url = "http://localhost:3000";
 const btn_filter = document.getElementById("filter");
 const btn_all = document.getElementById("all");
